@@ -11,6 +11,7 @@ import 'package:notes_hive_getx/screen/task_list_screen/widgets/emty_widget.dart
 import 'package:notes_hive_getx/screen/task_list_screen/widgets/group_windget.dart';
 import 'package:notes_hive_getx/screen/task_list_screen/widgets/items_task_widgets.dart';
 
+// ignore: must_be_immutable
 class TaskListScreen extends StatelessWidget {
   TaskListScreen({super.key});
 
@@ -18,15 +19,16 @@ class TaskListScreen extends StatelessWidget {
   final double hightButtomShit = 70;
   final searchTxtController = TextEditingController();
   final ScrollController scrollController = ScrollController();
+  int backClick = 0;
   @override
   Widget build(BuildContext context) {
     late bool back = false;
-    late int backClick = 0;
+
     return GetBuilder<NotesController>(builder: (noteControll) {
       return PopScope(
           canPop: back,
           onPopInvokedWithResult: (didPop, result) =>
-              handlePop(didPop, result, noteControll, back, backClick, context),
+              handlePop(didPop, result, noteControll, back, context),
           child: Scaffold(
               // backgroundColor: const Color(0xFFF7F7F7),
               // appBar: appBarMetod(noteControll),
@@ -120,7 +122,7 @@ class TaskListScreen extends StatelessWidget {
     Object? result,
     NotesController noteControll,
     bool back,
-    int backClick,
+    // int backClick,
     BuildContext context,
   ) {
     if (didPop) {
