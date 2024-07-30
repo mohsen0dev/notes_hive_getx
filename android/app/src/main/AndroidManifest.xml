@@ -1,6 +1,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+        <!-- for below android 13-->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- for above android 13-->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <queries>
+        <package android:name="ir.mservices.market" />
+        <package android:name="com.farsitel.bazaar" />
+    </queries>
     <application
-        android:label="notes_hive_getx"
+        android:label="یادداشت ها"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
