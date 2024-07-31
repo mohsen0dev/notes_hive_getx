@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 // import 'package:gallery_saver/gallery_saver.dart';
 import 'package:get/get.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
+// import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:intl/intl.dart' as intl;
+import 'package:notes_hive_getx/constans/image_gallery_saver.dart';
 import 'package:notes_hive_getx/constans/list_color.dart';
 import 'package:notes_hive_getx/controller/theme_controller.dart';
 import 'package:notes_hive_getx/screen/task_add_screen/widgets/bottom_shit_them.dart';
@@ -29,7 +30,6 @@ class ShareScreen extends StatelessWidget {
     if (per == false) {
       return;
     }
-    print('object');
     String? base64String =
         await ScrollScreenshot.captureAndSaveScreenshot(globalKey);
 
@@ -42,6 +42,10 @@ class ShareScreen extends StatelessWidget {
       Uint8List bytes = base64Decode(base64String!);
       final result = await ImageGallerySaver.saveImage(bytes);
       debugPrint('byte= $result');
+
+      notficationSuccess(
+        'ذخیره یادداشت با موفقیت انجام شد\n$result',
+      );
     } else {
       throw Exception('Failed to capture widget as image');
     }
